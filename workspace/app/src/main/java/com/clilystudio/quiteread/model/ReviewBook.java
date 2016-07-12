@@ -1,0 +1,13 @@
+package com.clilystudio.quiteread.model;
+
+public class ReviewBook extends PostBook {
+    private String type;
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String string) {
+        this.type = string;
+    }
+}
