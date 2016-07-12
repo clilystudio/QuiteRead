@@ -1,4 +1,4 @@
-package com.clilystudio.quitereader;
+package com.clilystudio.quiteread;
 
 import android.annotation.SuppressLint;
 import android.support.v7.app.ActionBar;
