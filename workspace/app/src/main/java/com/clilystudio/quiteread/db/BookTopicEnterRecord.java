@@ -1,20 +1,19 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.Date;
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "BookTopicEnterRecord")
-public class BookTopicEnterRecord extends Model {
-    @Column(name = "book_id")
+@Entity(nameInDb = "BookTopicEnterRecord")
+public class BookTopicEnterRecord {
+    @Property(nameInDb = "book_id")
     public String book_id;
-    @Column(name = "time")
+    @Property(nameInDb = "time")
     public Date time;
-    @Column(name = "visit_count")
+    @Property(nameInDb = "visit_count")
     private int visitCount;
 
     public BookTopicEnterRecord() {
@@ -23,6 +22,13 @@ public class BookTopicEnterRecord extends Model {
     public BookTopicEnterRecord(String string) {
         this();
         this.book_id = string;
+    }
+
+    @Generated(hash = 313161328)
+    public BookTopicEnterRecord(String book_id, Date time, int visitCount) {
+        this.book_id = book_id;
+        this.time = time;
+        this.visitCount = visitCount;
     }
 
     public static BookTopicEnterRecord get(String string) {

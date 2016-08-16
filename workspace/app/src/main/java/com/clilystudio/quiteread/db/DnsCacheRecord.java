@@ -1,19 +1,30 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.Date;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "DnsCache")
-public class DnsCacheRecord extends Model {
-    @Column(name = "expiredTime")
+@Entity(nameInDb = "DnsCache")
+public class DnsCacheRecord {
+    @Property(nameInDb = "expiredTime")
     private Date expiredTime;
-    @Column(name = "host")
+    @Property(nameInDb = "host")
     private String host;
-    @Column(name = "ip")
+    @Property(nameInDb = "ip")
     private String ip;
+
+    @Generated(hash = 464109939)
+    public DnsCacheRecord(Date expiredTime, String host, String ip) {
+        this.expiredTime = expiredTime;
+        this.host = host;
+        this.ip = ip;
+    }
+
+    @Generated(hash = 996945023)
+    public DnsCacheRecord() {
+    }
 
     public Date getExpiredTime() {
         return this.expiredTime;

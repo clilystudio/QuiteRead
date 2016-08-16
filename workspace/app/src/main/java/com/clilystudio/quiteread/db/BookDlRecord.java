@@ -2,44 +2,60 @@ package com.clilystudio.quiteread.db;
 
 import android.text.TextUtils;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.From;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.Date;
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "BookDlRecord")
-public class BookDlRecord extends Model {
+@Entity(nameInDb = "BookDlRecord")
+public class BookDlRecord {
     public static final int END = 4;
     public static final int IDLE = 0;
     public static final int PAUSE = 3;
     public static final int PENDING = 1;
     public static final int PREPARE = 5;
     public static final int RUN = 2;
-    @Column(name = "author")
+    @Property(nameInDb = "author")
     private String author;
-    @Column(name = "bookId")
+    @Property(nameInDb = "bookId")
     private String bookId;
-    @Column(name = "bookTitle")
+    @Property(nameInDb = "bookTitle")
     private String bookTitle;
-    @Column(name = "created")
+    @Property(nameInDb = "created")
     private Date created;
-    @Column(name = "mode")
+    @Property(nameInDb = "mode")
     private int mode = -1;
-    @Column(name = "progress")
+    @Property(nameInDb = "progress")
     private int progress = 0;
-    @Column(name = "start")
+    @Property(nameInDb = "start")
     private int start;
-    @Column(name = "status")
+    @Property(nameInDb = "status")
     private int status = 0;
-    @Column(name = "tocId")
+    @Property(nameInDb = "tocId")
     private String tocId;
-    @Column(name = "total")
+    @Property(nameInDb = "total")
     private int total;
+
+    @Generated(hash = 1311635543)
+    public BookDlRecord(String author, String bookId, String bookTitle, Date created, int mode, int progress, int start, int status,
+            String tocId, int total) {
+        this.author = author;
+        this.bookId = bookId;
+        this.bookTitle = bookTitle;
+        this.created = created;
+        this.mode = mode;
+        this.progress = progress;
+        this.start = start;
+        this.status = status;
+        this.tocId = tocId;
+        this.total = total;
+    }
+
+    @Generated(hash = 371334419)
+    public BookDlRecord() {
+    }
 
     public static boolean containsTocInfo(BookDlRecord bookDlRecord) {
         return !TextUtils.isEmpty(bookDlRecord.getBookTitle()) && !TextUtils.isEmpty(bookDlRecord.getBookId());

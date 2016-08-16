@@ -1,20 +1,27 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.ActiveAndroid;
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "RetweenRecord")
-public class RetweenRecord extends Model {
-    @Column(name = "tweetId")
+@Entity(nameInDb = "RetweenRecord")
+public class RetweenRecord {
+    @Property(nameInDb = "tweetId")
     private String tweetId;
-    @Column(name = "userId")
+    @Property(nameInDb = "userId")
     private String userId;
+
+    @Generated(hash = 1470766683)
+    public RetweenRecord(String tweetId, String userId) {
+        this.tweetId = tweetId;
+        this.userId = userId;
+    }
+
+    @Generated(hash = 1693003640)
+    public RetweenRecord() {
+    }
 
     public static void cancelRetween(String string, String string2) {
         new Delete().from(RetweenRecord.class).where(" userId = ? and tweetId = ? ", string, string2).execute();

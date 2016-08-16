@@ -1,24 +1,34 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.From;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.Date;
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "BookSyncRecord")
-public class BookSyncRecord extends Model {
-    @Column(name = "bookId")
+@Entity(nameInDb = "BookSyncRecord")
+public class BookSyncRecord {
+    @Property(nameInDb = "bookId")
     private String bookId;
-    @Column(name = "type")
+    @Property(nameInDb = "type")
     private int type;
-    @Column(name = "updated")
+    @Property(nameInDb = "updated")
     private Date updated;
-    @Column(name = "userId")
+    @Property(nameInDb = "userId")
     private String userId;
+
+    @Generated(hash = 666093854)
+    public BookSyncRecord(String bookId, int type, Date updated, String userId) {
+        this.bookId = bookId;
+        this.type = type;
+        this.updated = updated;
+        this.userId = userId;
+    }
+
+    @Generated(hash = 1971690400)
+    public BookSyncRecord() {
+    }
 
     public static void create(String string, String string2, int n) {
         BookSyncRecord bookSyncRecord = new BookSyncRecord();

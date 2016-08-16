@@ -1,14 +1,14 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "BookVisitRecord")
-public class BookVisitRecord extends Model {
-    @Column(name = "bookId")
+@Entity(nameInDb = "BookVisitRecord")
+public class BookVisitRecord {
+    @Property(nameInDb = "bookId")
     private String bookId;
-    @Column(name = "hasGroup")
+    @Property(nameInDb = "hasGroup")
     private boolean hasGroup;
 
     public BookVisitRecord() {
@@ -16,6 +16,12 @@ public class BookVisitRecord extends Model {
 
     public BookVisitRecord(String string) {
         this.bookId = string;
+    }
+
+    @Generated(hash = 2140646535)
+    public BookVisitRecord(String bookId, boolean hasGroup) {
+        this.bookId = bookId;
+        this.hasGroup = hasGroup;
     }
 
     public String getBookId() {
@@ -32,5 +38,9 @@ public class BookVisitRecord extends Model {
 
     public void setHasGroup(boolean bl) {
         this.hasGroup = bl;
+    }
+
+    public boolean getHasGroup() {
+        return this.hasGroup;
     }
 }

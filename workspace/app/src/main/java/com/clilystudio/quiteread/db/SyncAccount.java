@@ -8,15 +8,29 @@ import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 import com.clilystudio.quiteread.model.Account;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
+
 import java.util.Date;
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "SyncAccount")
-public class SyncAccount extends Model {
-    @Column(name = "uid")
+@Entity(nameInDb = "SyncAccount")
+public class SyncAccount {
+    @Property(nameInDb = "uid")
     public String uid;
-    @Column(name = "update_time")
+    @Property(nameInDb = "update_time")
     public Date updateTime;
+
+    @Generated(hash = 1087905127)
+    public SyncAccount(String uid, Date updateTime) {
+        this.uid = uid;
+        this.updateTime = updateTime;
+    }
+
+    @Generated(hash = 317931897)
+    public SyncAccount() {
+    }
 
     public static boolean needSync(Date date) {
         if (date == null) {
@@ -50,5 +64,21 @@ public class SyncAccount extends Model {
         }
         syncAccount.updateTime = date;
         syncAccount.save();
+    }
+
+    public Date getUpdateTime() {
+        return this.updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUid() {
+        return this.uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

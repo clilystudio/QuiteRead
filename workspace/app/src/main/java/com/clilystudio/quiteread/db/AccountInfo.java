@@ -1,17 +1,16 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "AccountInfo")
-public class AccountInfo extends Model {
-    @Column(name = "prev_unimp_notif")
+@Entity(nameInDb = "AccountInfo")
+public class AccountInfo {
+    @Property(nameInDb = "prev_unimp_notif")
     private int prevUnimpNotif;
-    @Column(name = "token")
+    @Property(nameInDb = "token")
     private String token;
 
     public AccountInfo() {
@@ -20,6 +19,12 @@ public class AccountInfo extends Model {
     public AccountInfo(String string, int n) {
         this.token = string;
         this.prevUnimpNotif = n;
+    }
+
+    @Generated(hash = 326137279)
+    public AccountInfo(int prevUnimpNotif, String token) {
+        this.prevUnimpNotif = prevUnimpNotif;
+        this.token = token;
     }
 
     public static AccountInfo getByToken(String string) {

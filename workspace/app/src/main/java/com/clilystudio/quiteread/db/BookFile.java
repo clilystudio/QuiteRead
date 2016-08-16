@@ -1,30 +1,31 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
 import com.clilystudio.quiteread.util.StringUtils;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.io.File;
 import java.util.Date;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "BookFile")
-public class BookFile extends Model {
-    @Column(name = "file_path")
+@Entity(nameInDb = "BookFile")
+public class BookFile {
+    @Property(nameInDb = "file_path")
     public String filePath;
-    @Column(name = "name")
+    @Property(nameInDb = "name")
     public String name;
-    @Column(name = "progress")
+    @Property(nameInDb = "progress")
     public float progress;
-    @Column(name = "progress_chapter_index")
+    @Property(nameInDb = "progress_chapter_index")
     public int progressChapterIndex;
-    @Column(name = "progress_char_offset")
+    @Property(nameInDb = "progress_char_offset")
     public int progressCharOffset;
-    @Column(name = "size")
+    @Property(nameInDb = "size")
     public String size;
-    @Column(name = "top")
+    @Property(nameInDb = "top")
     public boolean top;
-    @Column(name = "updated")
+    @Property(nameInDb = "updated")
     public Date updated;
 
     public BookFile() {
@@ -34,6 +35,20 @@ public class BookFile extends Model {
         this.name = file.getName();
         this.size = StringUtils.formatFileSize(file.length());
         this.filePath = file.getPath();
+    }
+
+    @Generated(hash = 1315109083)
+    public BookFile(String filePath, String name, float progress,
+            int progressChapterIndex, int progressCharOffset, String size,
+            boolean top, Date updated) {
+        this.filePath = filePath;
+        this.name = name;
+        this.progress = progress;
+        this.progressChapterIndex = progressChapterIndex;
+        this.progressCharOffset = progressCharOffset;
+        this.size = size;
+        this.top = top;
+        this.updated = updated;
     }
 
     /*
@@ -149,5 +164,9 @@ public class BookFile extends Model {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+    public boolean getTop() {
+        return this.top;
     }
 }

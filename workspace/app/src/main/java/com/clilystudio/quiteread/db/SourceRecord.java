@@ -1,21 +1,31 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "SourceRecord")
-public class SourceRecord extends Model {
-    @Column(name = "bookId")
+@Entity(nameInDb = "SourceRecord")
+public class SourceRecord {
+    @Property(nameInDb = "bookId")
     private String bookId;
-    @Column(name = "sogouMd")
+    @Property(nameInDb = "sogouMd")
     private String sogouMd;
-    @Column(name = "source")
+    @Property(nameInDb = "source")
     private String source;
-    @Column(name = "sourceId")
+    @Property(nameInDb = "sourceId")
     private String sourceId;
+
+    @Generated(hash = 517911044)
+    public SourceRecord(String bookId, String sogouMd, String source, String sourceId) {
+        this.bookId = bookId;
+        this.sogouMd = sogouMd;
+        this.source = source;
+        this.sourceId = sourceId;
+    }
+
+    @Generated(hash = 98267261)
+    public SourceRecord() {
+    }
 
     public static void create(String string, String string2, String string3) {
         SourceRecord sourceRecord = new SourceRecord();

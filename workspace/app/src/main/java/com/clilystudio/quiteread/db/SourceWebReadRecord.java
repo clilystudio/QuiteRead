@@ -1,23 +1,34 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.From;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "SourceWebReadRecord")
-public class SourceWebReadRecord extends Model {
-    @Column(name = "_id")
+@Entity(nameInDb = "SourceWebReadRecord")
+public class SourceWebReadRecord {
+    @Property(nameInDb = "_id")
     private String _id;
-    @Column(name = "bookId")
+    @Property(nameInDb = "bookId")
     private String bookId;
-    @Column(name = "chapterIndex")
+    @Property(nameInDb = "chapterIndex")
     private int chapterIndex;
-    @Column(name = "cmd")
+    @Property(nameInDb = "cmd")
     private String cmd;
-    @Column(name = "readMode")
+    @Property(nameInDb = "readMode")
     private int readMode = -1;
+
+    @Generated(hash = 2050493127)
+    public SourceWebReadRecord(String _id, String bookId, int chapterIndex, String cmd, int readMode) {
+        this._id = _id;
+        this.bookId = bookId;
+        this.chapterIndex = chapterIndex;
+        this.cmd = cmd;
+        this.readMode = readMode;
+    }
+
+    @Generated(hash = 635304056)
+    public SourceWebReadRecord() {
+    }
 
     public static void create(String string, int n, int n2) {
         SourceWebReadRecord sourceWebReadRecord = new SourceWebReadRecord();
@@ -74,5 +85,13 @@ public class SourceWebReadRecord extends Model {
 
     public void setReadMode(int n) {
         this.readMode = n;
+    }
+
+    public String get_id() {
+        return this._id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

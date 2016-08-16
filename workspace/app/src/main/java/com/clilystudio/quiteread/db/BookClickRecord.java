@@ -1,21 +1,30 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "BookClickRecords")
-public class BookClickRecord extends Model {
-    @Column(name = "book_id")
+@Entity(nameInDb = "BookClickRecords")
+public class BookClickRecord {
+    @Property(nameInDb = "book_id")
     public String book_id;
-    @Column(name = "today_time")
+    @Property(nameInDb = "today_time")
     public String today_time;
-    @Column(name = "send_status")
+    @Property(nameInDb = "send_status")
     private boolean send_status = false;
+
+    @Generated(hash = 1176830723)
+    public BookClickRecord(String book_id, String today_time, boolean send_status) {
+        this.book_id = book_id;
+        this.today_time = today_time;
+        this.send_status = send_status;
+    }
+
+    @Generated(hash = 208228909)
+    public BookClickRecord() {
+    }
 
     public static BookClickRecord create(String string, String string2, boolean bl) {
         BookClickRecord bookClickRecord = new BookClickRecord();
@@ -53,5 +62,29 @@ public class BookClickRecord extends Model {
 
     public void setSendStatus(boolean bl) {
         this.send_status = bl;
+    }
+
+    public boolean getSend_status() {
+        return this.send_status;
+    }
+
+    public void setSend_status(boolean send_status) {
+        this.send_status = send_status;
+    }
+
+    public String getToday_time() {
+        return this.today_time;
+    }
+
+    public void setToday_time(String today_time) {
+        this.today_time = today_time;
+    }
+
+    public String getBook_id() {
+        return this.book_id;
+    }
+
+    public void setBook_id(String book_id) {
+        this.book_id = book_id;
     }
 }

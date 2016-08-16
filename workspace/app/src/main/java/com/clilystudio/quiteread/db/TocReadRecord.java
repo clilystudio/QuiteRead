@@ -1,25 +1,38 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "TocReadRecords")
-public class TocReadRecord extends Model {
-    @Column(name = "book_id")
+@Entity(nameInDb = "TocReadRecords")
+public class TocReadRecord {
+    @Property(nameInDb = "book_id")
     private String book_id;
-    @Column(name = "chapter_num")
+    @Property(nameInDb = "chapter_num")
     private int chapter_num = -1;
-    @Column(name = "chapter_title")
+    @Property(nameInDb = "chapter_title")
     private String chapter_title;
-    @Column(name = "character_num")
+    @Property(nameInDb = "character_num")
     private int character_num = 0;
-    @Column(name = "toc_id")
+    @Property(nameInDb = "toc_id")
     private String toc_id;
-    @Column(name = "toc_name")
+    @Property(nameInDb = "toc_name")
     private String toc_name;
+
+    @Generated(hash = 2006785598)
+    public TocReadRecord(String book_id, int chapter_num, String chapter_title, int character_num, String toc_id,
+            String toc_name) {
+        this.book_id = book_id;
+        this.chapter_num = chapter_num;
+        this.chapter_title = chapter_title;
+        this.character_num = character_num;
+        this.toc_id = toc_id;
+        this.toc_name = toc_name;
+    }
+
+    @Generated(hash = 606789150)
+    public TocReadRecord() {
+    }
 
     public static void create(String string, String string2, String string3, String string4, int n, int n2) {
         TocReadRecord tocReadRecord = new TocReadRecord();
@@ -89,5 +102,53 @@ public class TocReadRecord extends Model {
 
     public void setTocId(String string) {
         this.toc_id = string;
+    }
+
+    public String getToc_name() {
+        return this.toc_name;
+    }
+
+    public void setToc_name(String toc_name) {
+        this.toc_name = toc_name;
+    }
+
+    public String getToc_id() {
+        return this.toc_id;
+    }
+
+    public void setToc_id(String toc_id) {
+        this.toc_id = toc_id;
+    }
+
+    public int getCharacter_num() {
+        return this.character_num;
+    }
+
+    public void setCharacter_num(int character_num) {
+        this.character_num = character_num;
+    }
+
+    public String getChapter_title() {
+        return this.chapter_title;
+    }
+
+    public void setChapter_title(String chapter_title) {
+        this.chapter_title = chapter_title;
+    }
+
+    public int getChapter_num() {
+        return this.chapter_num;
+    }
+
+    public void setChapter_num(int chapter_num) {
+        this.chapter_num = chapter_num;
+    }
+
+    public String getBook_id() {
+        return this.book_id;
+    }
+
+    public void setBook_id(String book_id) {
+        this.book_id = book_id;
     }
 }

@@ -2,16 +2,15 @@ package com.clilystudio.quiteread.db;
 
 import android.text.TextUtils;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "DownloadItem")
-public class DownloadItem extends Model {
-    @Column(name = "package_name")
+@Entity(nameInDb = "DownloadItem")
+public class DownloadItem {
+    @Property(nameInDb = "package_name")
     public String packageName;
-    @Column(name = "uid")
+    @Property(nameInDb = "uid")
     public String uid;
 
     public DownloadItem() {
@@ -21,10 +20,32 @@ public class DownloadItem extends Model {
         this.packageName = string;
     }
 
+    @Generated(hash = 225052799)
+    public DownloadItem(String packageName, String uid) {
+        this.packageName = packageName;
+        this.uid = uid;
+    }
+
     /*
      * Enabled aggressive block sorting
      */
     public static boolean existsInDb(String string) {
         return !(TextUtils.isEmpty(string) || new Select().from(DownloadItem.class).where("package_name=?", string).execute().size() == 0);
+    }
+
+    public String getUid() {
+        return this.uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getPackageName() {
+        return this.packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 }

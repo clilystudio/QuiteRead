@@ -1,23 +1,34 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "MixTocRecords")
-public class MixTocRecord extends Model {
-    @Column(name = "bookId")
+@Entity(nameInDb = "MixTocRecords")
+public class MixTocRecord {
+    @Property(nameInDb = "bookId")
     private String bookId;
-    @Column(name = "chapterIndex")
+    @Property(nameInDb = "chapterIndex")
     private int chapterIndex = -1;
-    @Column(name = "chapterTitle")
+    @Property(nameInDb = "chapterTitle")
     private String chapterTitle;
-    @Column(name = "charIndex")
+    @Property(nameInDb = "charIndex")
     private int charIndex = 0;
-    @Column(name = "tocId")
+    @Property(nameInDb = "tocId")
     private String tocId;
+
+    @Generated(hash = 608302737)
+    public MixTocRecord(String bookId, int chapterIndex, String chapterTitle, int charIndex, String tocId) {
+        this.bookId = bookId;
+        this.chapterIndex = chapterIndex;
+        this.chapterTitle = chapterTitle;
+        this.charIndex = charIndex;
+        this.tocId = tocId;
+    }
+
+    @Generated(hash = 1860680071)
+    public MixTocRecord() {
+    }
 
     public static MixTocRecord create(String string, String string2, int n, int n2) {
         MixTocRecord mixTocRecord = new MixTocRecord();
@@ -70,5 +81,13 @@ public class MixTocRecord extends Model {
 
     public void setTocId(String string) {
         this.tocId = string;
+    }
+
+    public String getChapterTitle() {
+        return this.chapterTitle;
+    }
+
+    public void setChapterTitle(String chapterTitle) {
+        this.chapterTitle = chapterTitle;
     }
 }

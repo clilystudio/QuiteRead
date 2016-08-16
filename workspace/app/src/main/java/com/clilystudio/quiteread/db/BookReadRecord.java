@@ -1,76 +1,103 @@
 package com.clilystudio.quiteread.db;
 
-import com.clilystudio.quiteread.am;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.From;
-import com.activeandroid.query.Select;
-import com.clilystudio.quiteread.api.ApiService;
-import com.clilystudio.quiteread.event.BookAddedEvent;
-import com.clilystudio.quiteread.event.BookRemovedEvent;
-import com.clilystudio.quiteread.event.BusProvider;
 import com.clilystudio.quiteread.model.Account;
 import com.clilystudio.quiteread.model.BookGenderRecommend;
 import com.clilystudio.quiteread.model.BookInfo;
 import com.clilystudio.quiteread.model.RemoteBookShelf;
-import com.clilystudio.quiteread.util.t;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.Date;
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "BookReadRecords")
-public class BookReadRecord extends Model {
-    @Column(name = "have_cp")
+@Entity(nameInDb = "BookReadRecords")
+public class BookReadRecord {
+    @Property(nameInDb = "have_cp")
     public int have_cp;
-    @Column(name = "lastActionTime")
+    @Property(nameInDb = "lastActionTime")
     public long lastActionTime;
-    @Column(name = "readTime")
+    @Property(nameInDb = "readTime")
     public Date readTime;
-    @Column(name = "recommended")
+    @Property(nameInDb = "recommended")
     public boolean recommended;
-    @Column(name = "account")
+    @Property(nameInDb = "account")
     private String account;
-    @Column(name = "author")
+    @Property(nameInDb = "author")
     private String author;
-    @Column(name = "book_id")
+    @Property(nameInDb = "book_id")
     private String book_id;
-    @Column(name = "chapterCount")
+    @Property(nameInDb = "chapterCount")
     private int chapterCount;
-    @Column(name = "chapterCountAtFeed")
+    @Property(nameInDb = "chapterCountAtFeed")
     private int chapterCountAtFeed;
-    @Column(name = "chapterTitle")
+    @Property(nameInDb = "chapterTitle")
     private String chapterTitle;
-    @Column(name = "cover")
+    @Property(nameInDb = "cover")
     private String cover;
-    @Column(name = "deleted")
+    @Property(nameInDb = "deleted")
     private boolean deleted = false;
-    @Column(name = "downloadedSource")
+    @Property(nameInDb = "downloadedSource")
     private String downloadedSource;
-    @Column(name = "feedFat")
+    @Property(nameInDb = "feedFat")
     private boolean feedFat = false;
-    @Column(name = "feeding")
+    @Property(nameInDb = "feeding")
     private boolean feeding = false;
-    @Column(name = "is_top")
+    @Property(nameInDb = "is_top")
     private boolean is_top = false;
-    @Column(name = "is_unread")
+    @Property(nameInDb = "is_unread")
     private boolean is_unread = false;
-    @Column(name = "last_chapter")
+    @Property(nameInDb = "last_chapter")
     private String last_chapter;
-    @Column(name = "localModifiedDate")
+    @Property(nameInDb = "localModifiedDate")
     private Date localModifiedDate;
-    @Column(name = "readMode")
+    @Property(nameInDb = "readMode")
     private int readMode = -1;
-    @Column(name = "title")
+    @Property(nameInDb = "title")
     private String title;
-    @Column(name = "tocIndex")
+    @Property(nameInDb = "tocIndex")
     private int tocIndex;
-    @Column(name = "toc_id")
+    @Property(nameInDb = "toc_id")
     private String toc_id;
-    @Column(name = "updated")
+    @Property(nameInDb = "updated")
     private Date updated;
+
+    @Generated(hash = 530397691)
+    public BookReadRecord(int have_cp, long lastActionTime, Date readTime, boolean recommended, String account, String author,
+            String book_id, int chapterCount, int chapterCountAtFeed, String chapterTitle, String cover, boolean deleted,
+            String downloadedSource, boolean feedFat, boolean feeding, boolean is_top, boolean is_unread, String last_chapter,
+            Date localModifiedDate, int readMode, String title, int tocIndex, String toc_id, Date updated) {
+        this.have_cp = have_cp;
+        this.lastActionTime = lastActionTime;
+        this.readTime = readTime;
+        this.recommended = recommended;
+        this.account = account;
+        this.author = author;
+        this.book_id = book_id;
+        this.chapterCount = chapterCount;
+        this.chapterCountAtFeed = chapterCountAtFeed;
+        this.chapterTitle = chapterTitle;
+        this.cover = cover;
+        this.deleted = deleted;
+        this.downloadedSource = downloadedSource;
+        this.feedFat = feedFat;
+        this.feeding = feeding;
+        this.is_top = is_top;
+        this.is_unread = is_unread;
+        this.last_chapter = last_chapter;
+        this.localModifiedDate = localModifiedDate;
+        this.readMode = readMode;
+        this.title = title;
+        this.tocIndex = tocIndex;
+        this.toc_id = toc_id;
+        this.updated = updated;
+    }
+
+    @Generated(hash = 553899228)
+    public BookReadRecord() {
+    }
 
     /*
      * Enabled aggressive block sorting
@@ -489,5 +516,69 @@ public class BookReadRecord extends Model {
 
     public void setUnread(boolean bl) {
         this.is_unread = bl;
+    }
+
+    public String getToc_id() {
+        return this.toc_id;
+    }
+
+    public void setToc_id(String toc_id) {
+        this.toc_id = toc_id;
+    }
+
+    public String getLast_chapter() {
+        return this.last_chapter;
+    }
+
+    public void setLast_chapter(String last_chapter) {
+        this.last_chapter = last_chapter;
+    }
+
+    public boolean getIs_unread() {
+        return this.is_unread;
+    }
+
+    public void setIs_unread(boolean is_unread) {
+        this.is_unread = is_unread;
+    }
+
+    public boolean getIs_top() {
+        return this.is_top;
+    }
+
+    public void setIs_top(boolean is_top) {
+        this.is_top = is_top;
+    }
+
+    public boolean getFeeding() {
+        return this.feeding;
+    }
+
+    public boolean getFeedFat() {
+        return this.feedFat;
+    }
+
+    public boolean getDeleted() {
+        return this.deleted;
+    }
+
+    public String getBook_id() {
+        return this.book_id;
+    }
+
+    public void setBook_id(String book_id) {
+        this.book_id = book_id;
+    }
+
+    public boolean getRecommended() {
+        return this.recommended;
+    }
+
+    public Date getReadTime() {
+        return this.readTime;
+    }
+
+    public void setReadTime(Date readTime) {
+        this.readTime = readTime;
     }
 }

@@ -1,26 +1,34 @@
 package com.clilystudio.quiteread.db;
 
-import com.activeandroid.Model;
-import com.activeandroid.annotation.Column;
-import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
-import com.activeandroid.query.From;
-import com.activeandroid.query.Select;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Property;
 
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
-@Table(name = "TweetCache")
-public class TweetCache extends Model {
+@Entity(nameInDb = "TweetCache")
+public class TweetCache {
     public static final String HOT_USER_ID = "zhuishushenqi_hot_user_id";
     public static final int TYPE_HOT = 2;
     public static final int TYPE_MY = 3;
     public static final int TYPE_TIMELINE = 1;
-    @Column(name = "content")
+    @Property(nameInDb = "content")
     private String content;
-    @Column(name = "type")
+    @Property(nameInDb = "type")
     private int type;
-    @Column(name = "userId")
+    @Property(nameInDb = "userId")
     private String userId;
+
+    @Generated(hash = 869996053)
+    public TweetCache(String content, int type, String userId) {
+        this.content = content;
+        this.type = type;
+        this.userId = userId;
+    }
+
+    @Generated(hash = 2102072745)
+    public TweetCache() {
+    }
 
     public static void clear(String string) {
         new Delete().from(TweetCache.class).where(" userId = ? ", string).execute();
