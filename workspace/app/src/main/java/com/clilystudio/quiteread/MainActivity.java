@@ -12,6 +12,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.clilystudio.quiteread.dao.DaoMaster;
+import com.clilystudio.quiteread.dao.DaoSession;
+
+import org.greenrobot.greendao.database.Database;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -21,14 +26,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FloatingActionButton mFab2;
     private NavigationView mNavView;
     private DrawerLayout mDrawerLayout;
+    private DaoSession daoSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        DevOpenHelper helper = new DevOpenHelper(this, ENCRYPTED ? "notes-db-encrypted" : "notes-db");
-        Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "quiteread.db");
+        Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }
 
@@ -115,5 +121,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 break;
         }
+    }
+
+
+    public DaoSession getDaoSession() {
+        return daoSession;
     }
 }

@@ -21,50 +21,12 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        RetweenRecordDao.createTable(db, ifNotExists);
-        TocReadRecordDao.createTable(db, ifNotExists);
-        BookSyncRecordDao.createTable(db, ifNotExists);
-        BookVisitRecordDao.createTable(db, ifNotExists);
-        MixTocRecordDao.createTable(db, ifNotExists);
-        BookTopicEnterRecordDao.createTable(db, ifNotExists);
-        BookDlRecordDao.createTable(db, ifNotExists);
-        BookClickRecordDao.createTable(db, ifNotExists);
-        PostUsefulRecordDao.createTable(db, ifNotExists);
-        SourceWebReadRecordDao.createTable(db, ifNotExists);
-        SyncAccountDao.createTable(db, ifNotExists);
-        TweetCacheDao.createTable(db, ifNotExists);
-        DownloadItemDao.createTable(db, ifNotExists);
-        VoteRecordDao.createTable(db, ifNotExists);
-        BookReadRecordDao.createTable(db, ifNotExists);
-        SourceRecordDao.createTable(db, ifNotExists);
         DnsCacheRecordDao.createTable(db, ifNotExists);
-        PostAgreeRecordDao.createTable(db, ifNotExists);
-        BookFileDao.createTable(db, ifNotExists);
-        AccountInfoDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        RetweenRecordDao.dropTable(db, ifExists);
-        TocReadRecordDao.dropTable(db, ifExists);
-        BookSyncRecordDao.dropTable(db, ifExists);
-        BookVisitRecordDao.dropTable(db, ifExists);
-        MixTocRecordDao.dropTable(db, ifExists);
-        BookTopicEnterRecordDao.dropTable(db, ifExists);
-        BookDlRecordDao.dropTable(db, ifExists);
-        BookClickRecordDao.dropTable(db, ifExists);
-        PostUsefulRecordDao.dropTable(db, ifExists);
-        SourceWebReadRecordDao.dropTable(db, ifExists);
-        SyncAccountDao.dropTable(db, ifExists);
-        TweetCacheDao.dropTable(db, ifExists);
-        DownloadItemDao.dropTable(db, ifExists);
-        VoteRecordDao.dropTable(db, ifExists);
-        BookReadRecordDao.dropTable(db, ifExists);
-        SourceRecordDao.dropTable(db, ifExists);
         DnsCacheRecordDao.dropTable(db, ifExists);
-        PostAgreeRecordDao.dropTable(db, ifExists);
-        BookFileDao.dropTable(db, ifExists);
-        AccountInfoDao.dropTable(db, ifExists);
     }
 
     /**
@@ -83,26 +45,7 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(RetweenRecordDao.class);
-        registerDaoClass(TocReadRecordDao.class);
-        registerDaoClass(BookSyncRecordDao.class);
-        registerDaoClass(BookVisitRecordDao.class);
-        registerDaoClass(MixTocRecordDao.class);
-        registerDaoClass(BookTopicEnterRecordDao.class);
-        registerDaoClass(BookDlRecordDao.class);
-        registerDaoClass(BookClickRecordDao.class);
-        registerDaoClass(PostUsefulRecordDao.class);
-        registerDaoClass(SourceWebReadRecordDao.class);
-        registerDaoClass(SyncAccountDao.class);
-        registerDaoClass(TweetCacheDao.class);
-        registerDaoClass(DownloadItemDao.class);
-        registerDaoClass(VoteRecordDao.class);
-        registerDaoClass(BookReadRecordDao.class);
-        registerDaoClass(SourceRecordDao.class);
         registerDaoClass(DnsCacheRecordDao.class);
-        registerDaoClass(PostAgreeRecordDao.class);
-        registerDaoClass(BookFileDao.class);
-        registerDaoClass(AccountInfoDao.class);
     }
 
     public DaoSession newSession() {
