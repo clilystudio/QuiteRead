@@ -1,62 +1,81 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:gravity="center"
-                tools:context=".ui.SplashActivity">
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.SplashActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center">
 
+        <LinearLayout
+            android:id="@+id/ll_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/splash_title_small"
+                android:text="@string/chinese_space"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ll_left"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/splash_title_large"
+                android:text="@string/splash_title_06"/>
+
+            <TextView
+                style="@style/splash_title_large"
+                android:text="@string/splash_title_07"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/splash_title_margin"
+            android:layout_toEndOf="@id/ll_center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/splash_title_small"
+                android:text="@string/splash_title_01"/>
+
+            <TextView
+                style="@style/splash_title_small"
+                android:text="@string/splash_title_02"/>
+
+            <TextView
+                style="@style/splash_title_small"
+                android:text="@string/splash_title_03"/>
+
+            <TextView
+                style="@style/splash_title_small"
+                android:text="@string/splash_title_04"/>
+
+            <TextView
+                style="@style/splash_title_small"
+                android:text="@string/splash_title_05"/>
+        </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
-        android:id="@+id/ll_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            style="@style/splash_title_small"
-            android:text="@string/chinese_space"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/ll_left"
+        android:layout_gravity="bottom"
+        android:paddingBottom="20dp"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
-            style="@style/splash_title_large"
-            android:text="@string/splash_title_06"/>
-
-        <TextView
-            style="@style/splash_title_large"
-            android:text="@string/splash_title_07"/>
+            style="@style/splash_copyright"
+            android:text="@string/splash_title_10"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/splash_title_margin"
-        android:layout_toEndOf="@id/ll_center"
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/splash_title_small"
-            android:text="@string/splash_title_01"/>
-
-        <TextView
-            style="@style/splash_title_small"
-            android:text="@string/splash_title_02"/>
-
-        <TextView
-            style="@style/splash_title_small"
-            android:text="@string/splash_title_03"/>
-
-        <TextView
-            style="@style/splash_title_small"
-            android:text="@string/splash_title_04"/>
-
-        <TextView
-            style="@style/splash_title_small"
-            android:text="@string/splash_title_05"/>
-    </LinearLayout>
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

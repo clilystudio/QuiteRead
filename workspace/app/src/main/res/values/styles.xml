@@ -39,5 +39,12 @@
         <item name="android:paddingRight">@dimen/splash_title_padding</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
+    <style name="splash_copyright">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/splash_copyright_small</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
 
 </resources>

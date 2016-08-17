@@ -1,4 +1,4 @@
-package com.clilystudio.quiteread;
+package com.clilystudio.quiteread.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.clilystudio.quiteread.R;
 import com.clilystudio.quiteread.dao.DaoMaster;
 import com.clilystudio.quiteread.dao.DaoSession;
 
@@ -26,17 +27,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FloatingActionButton mFab2;
     private NavigationView mNavView;
     private DrawerLayout mDrawerLayout;
-    private DaoSession daoSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "quiteread.db");
-        Database db = helper.getWritableDb();
-        daoSession = new DaoMaster(db).newSession();
     }
+
+    private void initViews() {
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        assert mFab != null;
+        mFab.setOnClickListener(this);
+        mFab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        assert mFab2 != null;
+        mFab2.setOnClickListener(this);
+        mNavView = (NavigationView) findViewById(R.id.nav_view);
+        assert mNavView != null;
+        mNavView.setNavigationItemSelectedListener(this);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mListView = (ListView) findViewById(R.id.listview);
+        mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getData()));
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -96,21 +110,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return list;
     }
 
-    private void initViews() {
-        mListView = (ListView) findViewById(R.id.listview);
-        mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getData()));
-        mFab = (FloatingActionButton) findViewById(R.id.fab);
-        assert mFab != null;
-        mFab.setOnClickListener(this);
-        mFab2 = (FloatingActionButton) findViewById(R.id.fab2);
-        assert mFab2 != null;
-        mFab2.setOnClickListener(this);
-        mNavView = (NavigationView) findViewById(R.id.nav_view);
-        assert mNavView != null;
-        mNavView.setNavigationItemSelectedListener(this);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -121,10 +120,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 break;
         }
-    }
-
-
-    public DaoSession getDaoSession() {
-        return daoSession;
     }
 }
